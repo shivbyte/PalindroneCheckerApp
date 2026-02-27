@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
@@ -65,6 +66,30 @@ public class PalindromeCheckerApp {
             System.out.println("UC4 Result: " + arrayWord + " is a Palindrome");
         } else {
             System.out.println("UC4 Result: " + arrayWord + " is not a Palindrome");
+        }
+
+        // UC5 – Stack Based Palindrome Check
+
+        System.out.print("Enter a string for UC5 check: ");
+
+        String stackWord = scanner.nextLine();
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < stackWord.length(); i++) {
+            stack.push(stackWord.charAt(i));
+        }
+
+        String reversedStackWord = "";
+
+        while (!stack.isEmpty()) {
+            reversedStackWord = reversedStackWord + stack.pop();
+        }
+
+        if (stackWord.equals(reversedStackWord)) {
+            System.out.println("UC5 Result: " + stackWord + " is a Palindrome");
+        } else {
+            System.out.println("UC5 Result: " + stackWord + " is not a Palindrome");
         }
     }
 

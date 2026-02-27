@@ -1,4 +1,4 @@
- import java.util.Scanner;
+import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
@@ -23,7 +23,6 @@ public class PalindromeCheckerApp {
     // UC9 Recursive Method
     // =========================
     public static boolean isPalindromeRecursive(String str, int start, int end) {
-
         if (start >= end) {
             return true;
         }
@@ -40,7 +39,9 @@ public class PalindromeCheckerApp {
         // UC1 – Welcome Message
         System.out.println("Welcome to Palindrome Checker App Management System");
 
-        // UC2 – Hardcoded Palindrome Check
+        // =========================
+        // UC2 – Hardcoded Palindrome
+        // =========================
         String hardcodedWord = "madam";
         String reversedHardcoded = "";
 
@@ -48,16 +49,16 @@ public class PalindromeCheckerApp {
             reversedHardcoded += hardcodedWord.charAt(i);
         }
 
-        if (hardcodedWord.equals(reversedHardcoded)) {
-            System.out.println("UC2 Result: " + hardcodedWord + " is a Palindrome");
-        } else {
-            System.out.println("UC2 Result: " + hardcodedWord + " is not a Palindrome");
-        }
+        System.out.println("UC2 Result: " + hardcodedWord +
+                (hardcodedWord.equals(reversedHardcoded) ?
+                        " is a Palindrome" : " is not a Palindrome"));
 
         Scanner scanner = new Scanner(System.in);
 
-        // UC3
-        System.out.print("Enter a string to check (UC3): ");
+        // =========================
+        // UC3 – Reverse Using Loop
+        // =========================
+        System.out.print("Enter a string for UC3 check: ");
         String userWord = scanner.nextLine();
 
         String reversedUserWord = "";
@@ -65,19 +66,18 @@ public class PalindromeCheckerApp {
             reversedUserWord += userWord.charAt(i);
         }
 
-        if (userWord.equals(reversedUserWord)) {
-            System.out.println("UC3 Result: " + userWord + " is a Palindrome");
-        } else {
-            System.out.println("UC3 Result: " + userWord + " is not a Palindrome");
-        }
+        System.out.println("UC3 Result: " + userWord +
+                (userWord.equals(reversedUserWord) ?
+                        " is a Palindrome" : " is not a Palindrome"));
 
-        // UC4
+        // =========================
+        // UC4 – Character Array
+        // =========================
         System.out.print("Enter a string for UC4 check: ");
         String arrayWord = scanner.nextLine();
 
         char[] characters = arrayWord.toCharArray();
-        int start = 0;
-        int end = characters.length - 1;
+        int start = 0, end = characters.length - 1;
         boolean isPalindrome = true;
 
         while (start < end) {
@@ -92,7 +92,9 @@ public class PalindromeCheckerApp {
         System.out.println("UC4 Result: " + arrayWord +
                 (isPalindrome ? " is a Palindrome" : " is not a Palindrome"));
 
-        // UC5
+        // =========================
+        // UC5 – Stack
+        // =========================
         System.out.print("Enter a string for UC5 check: ");
         String stackWord = scanner.nextLine();
 
@@ -107,9 +109,12 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("UC5 Result: " + stackWord +
-                (stackWord.equals(reversedStackWord) ? " is a Palindrome" : " is not a Palindrome"));
+                (stackWord.equals(reversedStackWord) ?
+                        " is a Palindrome" : " is not a Palindrome"));
 
-        // UC6
+        // =========================
+        // UC6 – Queue + Stack
+        // =========================
         System.out.print("Enter a string for UC6 check: ");
         String qsWord = scanner.nextLine();
 
@@ -132,7 +137,9 @@ public class PalindromeCheckerApp {
         System.out.println("UC6 Result: " + qsWord +
                 (isPalindromeQS ? " is a Palindrome" : " is not a Palindrome"));
 
-        // UC7
+        // =========================
+        // UC7 – Deque
+        // =========================
         System.out.print("Enter a string for UC7 check: ");
         String dequeWord = scanner.nextLine();
 
@@ -152,11 +159,14 @@ public class PalindromeCheckerApp {
         System.out.println("UC7 Result: " + dequeWord +
                 (isPalindromeDeque ? " is a Palindrome" : " is not a Palindrome"));
 
-        // UC8
+        // =========================
+        // UC8 – Linked List
+        // =========================
         System.out.print("Enter a string for UC8 check: ");
         String llWord = scanner.nextLine();
 
         Node head = null, tail = null;
+
         for (char c : llWord.toCharArray()) {
             Node newNode = new Node(c);
             if (head == null) {
@@ -196,15 +206,37 @@ public class PalindromeCheckerApp {
         System.out.println("UC8 Result: " + llWord +
                 (isPalindromeLL ? " is a Palindrome" : " is not a Palindrome"));
 
-        // UC9
+        // =========================
+        // UC9 – Recursion
+        // =========================
         System.out.print("Enter a string for UC9 check: ");
         String recursiveWord = scanner.nextLine();
 
-        boolean isPalindromeRec = isPalindromeRecursive(
-                recursiveWord, 0, recursiveWord.length() - 1);
+        boolean isPalindromeRec =
+                isPalindromeRecursive(recursiveWord, 0, recursiveWord.length() - 1);
 
         System.out.println("UC9 Result: " + recursiveWord +
                 (isPalindromeRec ? " is a Palindrome" : " is not a Palindrome"));
+
+        // =========================
+        // UC10 – Case Insensitive + Ignore Spaces
+        // =========================
+        System.out.print("Enter a string for UC10 check: ");
+        String inputUC10 = scanner.nextLine();
+
+        String normalized = inputUC10
+                .replaceAll("\\s+", "")
+                .toLowerCase();
+
+        String reversedUC10 = "";
+        for (int i = normalized.length() - 1; i >= 0; i--) {
+            reversedUC10 += normalized.charAt(i);
+        }
+
+        System.out.println("UC10 Result: \"" + inputUC10 + "\"" +
+                (normalized.equals(reversedUC10)
+                        ? " is a Palindrome (Ignoring case & spaces)"
+                        : " is NOT a Palindrome"));
 
         scanner.close();
         System.out.println("Program Ended Successfully.");

@@ -1,12 +1,16 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
 
         // UC1 – Welcome Message
-        System.out.println("Welcome to Palimdrome Checker App mangement System");
+        System.out.println("Welcome to Palindrome Checker App Management System");
+        System.out.println("-----------------------------------");
 
+        // =========================
         // UC2 – Hardcoded Palindrome Check
+        // =========================
         String hardcodedWord = "madam";
         String reversedHardcoded = "";
 
@@ -20,7 +24,11 @@ public class PalindromeCheckerApp {
             System.out.println("UC2 Result: " + hardcodedWord + " is not a Palindrome");
         }
 
-        // UC3 – Palindrome Check Using String Reverse
+        System.out.println("-----------------------------------");
+
+        // =========================
+        // UC3 – User Input Palindrome
+        // =========================
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a string to check: ");
@@ -37,6 +45,10 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("UC3 Result: " + userWord + " is not a Palindrome");
         }
-    }
 
+        scanner.close();
+
+        System.out.println("-----------------------------------");
+        System.out.println("Program Ended Successfully.");
+    }
 }

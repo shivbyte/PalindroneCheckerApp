@@ -6,6 +6,22 @@ import java.util.Deque;
 
 public class PalindromeCheckerApp {
 
+    public static boolean isPalindromeRecursive(String str, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If characters don't match
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call
+        return isPalindromeRecursive(str, start + 1, end - 1);
+    }
+
     // Node class for Singly Linked List
     static class Node {
         char data;
@@ -225,6 +241,26 @@ public class PalindromeCheckerApp {
             System.out.println("UC8 Result: " + llWord + " is a Palindrome");
         } else {
             System.out.println("UC8 Result: " + llWord + " is not a Palindrome");
+        }
+
+// UC9 – Recursive Palindrome Check
+
+
+        System.out.println("-----------------------------------");
+        System.out.print("Enter a string for UC9 check: ");
+
+        String recursiveWord = scanner.nextLine();
+
+        boolean isPalindromeRec = isPalindromeRecursive(
+                recursiveWord,
+                0,
+                recursiveWord.length() - 1
+        );
+
+        if (isPalindromeRec) {
+            System.out.println("UC9 Result: " + recursiveWord + " is a Palindrome");
+        } else {
+            System.out.println("UC9 Result: " + recursiveWord + " is not a Palindrome");
         }
 
 

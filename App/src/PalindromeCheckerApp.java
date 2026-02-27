@@ -5,6 +5,17 @@ import java.util.LinkedList;
 import java.util.Deque;
 
 public class PalindromeCheckerApp {
+
+    // Node class for Singly Linked List
+    static class Node {
+        char data;
+        Node next;
+
+        Node(char data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
     public static void main(String[] args){
 
         // UC1 – Welcome Message
@@ -154,6 +165,69 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("UC7 Result: " + dequeWord + " is not a Palindrome");
         }
+
+// UC8 – Linked List Based Palindrome Check
+
+
+        System.out.println("-----------------------------------");
+        System.out.print("Enter a string for UC8 check: ");
+
+        String llWord = scanner.nextLine();
+
+        Node head = null;
+        Node tail = null;
+
+        for (int i = 0; i < llWord.length(); i++) {
+            Node newNode = new Node(llWord.charAt(i));
+
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
+            }
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        Node prev = null;
+        Node current = slow;
+
+        while (current != null) {
+            Node nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        Node firstHalf = head;
+        Node secondHalf = prev;
+
+        boolean isPalindromeLL = true;
+
+        while (secondHalf != null) {
+            if (firstHalf.data != secondHalf.data) {
+                isPalindromeLL = false;
+                break;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        if (isPalindromeLL) {
+            System.out.println("UC8 Result: " + llWord + " is a Palindrome");
+        } else {
+            System.out.println("UC8 Result: " + llWord + " is not a Palindrome");
+        }
+
+
     }
 
 }

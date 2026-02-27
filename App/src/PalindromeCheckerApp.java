@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Deque;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args){
@@ -121,6 +122,37 @@ public class PalindromeCheckerApp {
             System.out.println("UC6 Result: " + qsWord + " is a Palindrome");
         } else {
             System.out.println("UC6 Result: " + qsWord + " is not a Palindrome");
+        }
+
+        // UC7 – Deque Based Optimized Palindrome Check
+
+        System.out.println("-----------------------------------");
+        System.out.print("Enter a string for UC7 check: ");
+
+        String dequeWord = scanner.nextLine();
+
+        Deque<Character> deque = new LinkedList<>();
+
+        for (int i = 0; i < dequeWord.length(); i++) {
+            deque.addLast(dequeWord.charAt(i));
+        }
+
+        boolean isPalindromeDeque = true;
+
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                isPalindromeDeque = false;
+                break;
+            }
+        }
+
+        if (isPalindromeDeque) {
+            System.out.println("UC7 Result: " + dequeWord + " is a Palindrome");
+        } else {
+            System.out.println("UC7 Result: " + dequeWord + " is not a Palindrome");
         }
     }
 

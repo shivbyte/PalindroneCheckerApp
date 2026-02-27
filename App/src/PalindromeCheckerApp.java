@@ -263,6 +263,30 @@ public class PalindromeCheckerApp {
             System.out.println("UC9 Result: " + recursiveWord + " is not a Palindrome");
         }
 
+        // UC10 – Case-Insensitive & Space-Ignored Palindrome
+
+
+        System.out.println("-----------------------------------");
+        System.out.print("Enter a string for UC10 check: ");
+
+        String inputUC10 = scanner.nextLine();
+
+        String normalized = inputUC10
+                .replaceAll("\\s+", "")   // Remove spaces
+                .toLowerCase();           // Convert to lowercase
+
+        String reversedUC10 = "";
+
+        for (int i = normalized.length() - 1; i >= 0; i--) {
+            reversedUC10 += normalized.charAt(i);
+        }
+
+        if (normalized.equals(reversedUC10)) {
+            System.out.println("UC10 Result: \"" + inputUC10 + "\" is a Palindrome (Ignoring case & spaces)");
+        } else {
+            System.out.println("UC10 Result: \"" + inputUC10 + "\" is NOT a Palindrome");
+        }
+
 
     }
 
